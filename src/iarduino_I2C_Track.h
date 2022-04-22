@@ -1,5 +1,5 @@
 //	Библиотека для работы с дорожными знаками и светофором из линейки «дорожное движение», I2C-flash для Arduino: https://iarduino.ru/shop/Expansion-payments/road-traffic/
-//  Версия: 1.0.1
+//  Версия: 1.0.4
 //  Последнюю версию библиотеки Вы можете скачать по ссылке: https://iarduino.ru/file/546.html
 //  Подробное описание функций бибилиотеки доступно по ссылкам: https://wiki.iarduino.ru/page/road-sign/ или https://wiki.iarduino.ru/page/traffic-light/
 //  Библиотека является собственностью интернет магазина iarduino.ru и может свободно использоваться и распространяться!
