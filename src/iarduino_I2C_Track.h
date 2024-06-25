@@ -1,5 +1,5 @@
 //	Библиотека для работы с дорожными знаками и светофором из линейки «дорожное движение», I2C-flash для Arduino: https://iarduino.ru/shop/Expansion-payments/road-traffic/
-//  Версия: 1.0.5
+//  Версия: 1.0.6
 //  Последнюю версию библиотеки Вы можете скачать по ссылке: https://iarduino.ru/file/546.html
 //  Подробное описание функций бибилиотеки доступно по ссылкам: https://wiki.iarduino.ru/page/road-sign/ или https://wiki.iarduino.ru/page/traffic-light/
 //  Библиотека является собственностью интернет магазина iarduino.ru и может свободно использоваться и распространяться!
@@ -165,12 +165,13 @@ class iarduino_I2C_Track{																						//
 		}																										//
 	/**	Пользовательские функции **/																			//
 		#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__)										//
-		bool				begin					(TwoWire*     bus																		){ selI2C->begin(bus  ); return _begin(MODUL_SIGN ,1,1,0,0); }	//	Инициализация модуля	(Параметр:  объект для работы с аппаратной шиной I2C).
-		bool				begin					(                  uint8_t mod, uint8_t typ, uint8_t num=0, uint8_t sub=0, uint8_t tab=0){ selI2C->begin(&Wire); return _begin(mod,typ,num,sub,tab); }	//	Инициализация модуля	(Параметры:                                            тип модуля, группа знака или перекрёсток светофора [, номер знака или секции светофора] [, пункт знака] [, табличка знака]).
-		bool				begin					(TwoWire*     bus, uint8_t mod, uint8_t typ, uint8_t num=0, uint8_t sub=0, uint8_t tab=0){ selI2C->begin(bus  ); return _begin(mod,typ,num,sub,tab); }	//	Инициализация модуля	(Параметры: объект для работы с аппаратной шиной I2C,  тип модуля, группа знака или перекрёсток светофора [, номер знака или секции светофора] [, пункт знака] [, табличка знака]).
+		bool				begin					(TwoWire*     bus																		){ selI2C->init(bus  ); return _begin(MODUL_SIGN ,1,1,0,0); }	//	Инициализация модуля	(Параметр:  объект для работы с аппаратной шиной I2C).
+		bool				begin					(                  uint8_t mod, uint8_t typ, uint8_t num=0, uint8_t sub=0, uint8_t tab=0){ selI2C->init(&Wire); return _begin(mod,typ,num,sub,tab); }	//	Инициализация модуля	(Параметры:                                            тип модуля, группа знака или перекрёсток светофора [, номер знака или секции светофора] [, пункт знака] [, табличка знака]).
+		bool				begin					(TwoWire*     bus, uint8_t mod, uint8_t typ, uint8_t num=0, uint8_t sub=0, uint8_t tab=0){ selI2C->init(bus  ); return _begin(mod,typ,num,sub,tab); }	//	Инициализация модуля	(Параметры: объект для работы с аппаратной шиной I2C,  тип модуля, группа знака или перекрёсток светофора [, номер знака или секции светофора] [, пункт знака] [, табличка знака]).
 		#endif																									//
 		#if defined(iarduino_I2C_Software_h)																	//
-		bool				begin					(SoftTwoWire* bus, uint8_t mod, uint8_t typ, uint8_t num=0, uint8_t sub=0, uint8_t tab=0){ selI2C->begin(bus  ); return _begin(mod,typ,num,sub,tab); }	//	Инициализация модуля	(Параметры: объект для работы с программной шиной I2C, тип модуля, группа знака или перекрёсток светофора [, номер знака или секции светофора] [, пункт знака] [, табличка знака]).
+		bool				begin					(SoftTwoWire* bus																		){ selI2C->init(bus  ); return _begin(MODUL_SIGN ,1,1,0,0); }	//	Инициализация модуля	(Параметры: объект для работы с программной шиной I2C).
+		bool				begin					(SoftTwoWire* bus, uint8_t mod, uint8_t typ, uint8_t num=0, uint8_t sub=0, uint8_t tab=0){ selI2C->init(bus  ); return _begin(mod,typ,num,sub,tab); }	//	Инициализация модуля	(Параметры: объект для работы с программной шиной I2C, тип модуля, группа знака или перекрёсток светофора [, номер знака или секции светофора] [, пункт знака] [, табличка знака]).
 		#endif																									//
 		bool				reset					(void					);									//	Объявляем  функцию перезагрузки модуля								(Параметр:  отсутствует).
 		bool				changeAddress			(uint8_t				);									//	Объявляем  функцию смены адреса модуля на шине I2C					(Параметр:  новый адрес модуля).
